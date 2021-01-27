@@ -38,4 +38,17 @@ class DaoLance
         }
         return $lista;
     }
+
+    public function getLancesPartida($idPartida){
+        $sql = 'select * from Lance where partida ='.$idPartida.';';
+        $lista = array();
+        try {
+            $pst = Conexao::getPreparedStatement($sql);
+            $pst->execute();
+            $lista = $pst->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $lista;
+    }
 }

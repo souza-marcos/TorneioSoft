@@ -39,4 +39,17 @@ class DaoPartida
         }
         return $lista;
     }
+    public function getPartida($id)
+    {
+        $sql = 'select * from Partida where id = ' . $id . ';';
+        $partida = null;
+        try {
+            $pst = Conexao::getPreparedStatement($sql);
+            $pst->execute();
+            $partida = $pst->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $partida;
+    }
 }

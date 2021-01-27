@@ -19,7 +19,6 @@
         <?php
         require_once '../modelo/Lance.php';
         require_once '../Dao/DaoLance.php';
-
         $lance = new Lance();
         $lance->setPartida($_POST['partida']);
         $lance->setGerador($_POST['gerador']);

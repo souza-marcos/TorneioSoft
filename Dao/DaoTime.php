@@ -2,7 +2,7 @@
 require_once '../conexao/Conexao.php';
 class DaoTime
 {
-    public function incluir($time) 
+    public function incluir($time)
     {
         $sql = 'insert into time(id,nome,cidadeEstado,pais) values (?,?,?,?);';
         try {
@@ -32,5 +32,18 @@ class DaoTime
             echo $e->getMessage();
         }
         return $lista;
+    }
+    public function getTime($id)
+    {
+        $sql = 'select * from Time where id = ' . $id .';';
+        $result = array();
+        try {
+            $pst = Conexao::getPreparedStatement($sql);
+            $pst->execute();
+            $result = $pst->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
     }
 }

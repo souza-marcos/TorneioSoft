@@ -8,10 +8,24 @@
     <link rel="stylesheet" href="./css/tableStyle.css">
     <link rel="stylesheet" href="./css/main.css">
     <style>
-        table{
+        table {
             width: 70%;
         }
     </style>
+    <?php
+    require_once '../modelo/Lance.php';
+    require_once '../Dao/DaoLance.php';
+
+    $daoLance = new DaoLance();
+    $idPartida = null;
+    $lista = null;
+    if ($_GET != null) {
+        $idPartida = $_GET['id'];
+        $lista = $daoLance->getLancesPartida($idPartida);
+    } else {
+        $lista = $daoLance->getLista();
+    }
+    ?>
 </head>
 
 <body>
@@ -21,7 +35,11 @@
     </nav>
     <div id="content">
         <h1>Lista de Lances</h1>
-        <table>
+        <?php
+        if ($lista == null) {
+            echo '<p>Não possui nunhum lance cadastrado!</p>';
+        } else {
+            echo '<table>
             <tr>
                 <th>ID</th>
                 <th>Partida</th>
@@ -29,13 +47,7 @@
                 <th>Horário</th>
                 <th>Lance</th>
                 <th>Foto</th>
-            </tr>
-            <?php
-            require_once '../modelo/Lance.php';
-            require_once '../Dao/DaoLance.php';
-
-            $daoLance = new DaoLance();
-            $lista = $daoLance->getLista();
+            </tr>';
 
             foreach ($lista as $linha) {
                 echo '<tr>';
@@ -44,8 +56,10 @@
                 }
                 echo '</tr>';
             }
-            ?>
-        </table>
+
+            echo '</table>';
+        }
+        ?>
     </div>
 </body>
 

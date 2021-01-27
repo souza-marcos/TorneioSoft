@@ -1,5 +1,5 @@
 table {
-  width: 50%;
+  width: 80%;
   border-collapse: collapse;
   margin: auto;
 }
@@ -7,10 +7,14 @@ td,
 th {
   border: 1px solid black;
   padding: 5px 10px;
+  
 }
 tr:nth-child(odd) {
   background-color: #664A3A;
 }
 tr:nth-child(even) {
   background-color: #6e6e6e;
+}
+td:nth-child(8n){
+  display: flex;
 }

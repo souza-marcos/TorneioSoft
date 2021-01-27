@@ -15,33 +15,41 @@
         <a href="../index.html">Página Inicial</a>
     </nav>
     <div id="content">
-    <h1>Lista de Partidas</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Time Casa</th>
-            <th>Gols Casa</th>
-            <th>Time Fora</th>
-            <th>Gols Fora</th>
-            <th>Data</th>
-            <th>Local</th>
-        </tr>
-        <?php
-        require_once '../modelo/Partida.php';
-        require_once '../Dao/DaoPartida.php';
+        <h1>Lista de Partidas</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Time Casa</th>
+                <th>Gols Casa</th>
+                <th>Time Fora</th>
+                <th>Gols Fora</th>
+                <th>Data</th>
+                <th>Local</th>
+                <th>Lances</th>
+            </tr>
+            <?php
+            require_once '../Dao/DaoPartida.php';
+            require_once '../Dao/DaoTime.php';
 
-        $daoPartida = new DaoPartida();
-        $lista = $daoPartida->getLista();
+            $daoPartida = new DaoPartida();
+            $daoTime = new DaoTime();
+            $lista = $daoPartida->getLista();
 
-        foreach ($lista as $linha) {
-            echo '<tr>';
-            foreach ($linha as $valor) {
-                echo '<td>' . $valor . '</td>';
+            foreach ($lista as $linha) {
+                echo '<tr>';
+                foreach ($linha as $key => $valor) {
+                    if ($key == 'timeCasa' || $key == 'timeFora') {
+                        $time = $daoTime->getTime($valor);
+                        $valor = $time[0]['nome'];
+                    }
+                    echo '<td>' . $valor . '</td>';
+                }
+                echo '<td><a href="./listaLances.php?id=' . $linha['id'] . '">Visualizar</a> <a href="./formCadastroLance.php?id=' . $linha['id'] . '">Cadastrar</a></td>';
+
+                echo '</tr>';
             }
-            echo '</tr>';
-        }
-        ?>
-    </table>
+            ?>
+        </table>
     </div>
 </body>
 

@@ -1,65 +1,120 @@
 :root {
-  font-size: 62, 5%; /*10px*/
+  font-size: 15px;
 }
 * {
   font-family: sans-serif;
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
+  color: #000;
 }
-/* body {
-  height: 100%;
-} */
+body {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 10vh 90vh;
+  grid-template-areas:
+    "h h"
+    "m a";
+  background-image: url("images/bola-desktop.jpg");
+  background-attachment: fixed;
+  background-position: center;
+}
+
 nav {
   background-color: #29652a;
+  grid-area: h;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  color: #ffffff;
-  font-size: 1rem;
 }
-nav a {
-  text-decoration: none;
-  color: #ffffff;
-  padding: 1% 1.5%;
-  border-radius: 10px;
-  transition: background-color 0.2s;
-}
-nav a:hover {
-  background-color: #1b4c1c;
-}
-#content {
-  padding: 1% 2%;
-  background-color: #1e774a;
-  height: 84.9vh;
-}
-#content {
-  color: #ffffff;
-}
-#content ul {
-  display: flex;
-  width: 75%;
-  justify-content: space-between;
 
-  margin: 10vh auto;
+#descricao {
+  grid-area: m;
+  padding: 2vh 2vw;
+  display: inherit;
+  align-content: center;
+  line-height: 2rem;
 }
-#content li {
-  list-style-type: none;
-  margin: 1% 0;
+#descricao p {
+  font-size: 1.3rem;
+  text-align: justify;
 }
-#content a {
-  background-color: #664a3a;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 1.5vh 1vw;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  transition: background-color 0.3s;
+#descricao a {
+  justify-self: flex-end;
 }
-#content a:hover {
-  background-color: #78281e;
+
+#entrada {
+  grid-area: a;
+  padding: 3vh 2vw;
+  text-align: justify;
 }
-h2 {
+
+h1 {
   font-size: 2rem;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  background-color: #29652a;
+  color: #fff;
+  padding: 8px 5px;
+  margin: 1vh 0;
+  border-radius: 5px;
+  border: #29652a solid 1px;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: center;
+  width: 30vw;
+}
+
+a:hover {
+  background-color: rgb(232, 255, 227);
+  color: #29652a;
+}
+
+.card {
+  border-radius: 10px;
+  margin: 3vh 2vw 3vh 0;
+  background-color: rgba(255, 255, 255, 0.788);
+  box-shadow: 5px 5px 15px 5px rgba(92, 88, 88, 0.466);
+  display: flex;
+  flex-direction: column;
+}
+.card p {
+  font-size: 1.3rem;
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/*MOBILE*/
+@media (max-width: 760px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    background-image: url(images/bola-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  #descricao {
+    flex-direction: column;
+  }
+  .card {
+    margin: 3vh 2vw;
+  }
+  .card div {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  a {
+    width: auto;
+  }
 }

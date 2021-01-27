@@ -12,7 +12,7 @@
 <body>
     <nav>
         <h1>Atividade de LP II </h1>
-        <a href="../index.html">Página Inicial</a>
+        <a href="paginaInicial.php">Página Inicial</a>
     </nav>
     <div id="content">
         <h1>Cadastro de Times</h1>
@@ -20,17 +20,17 @@
         <form action="cadastroTime.php" method="post">
             <div class="rowForm">
                 <label for="nome">Nome: </label>
-                <input type="text" name="nome" id="nome">
+                <input type="text" name="nome" id="nome" required>
             </div>
 
             <div class="rowForm">
                 <label for="cidadeEstado">Cidade e Estado: </label>
-                <input type="text" name="cidadeEstado" id="cidadeEstado">
+                <input type="text" name="cidadeEstado" id="cidadeEstado" required>
 
             </div>
             <div class="rowForm">
                 <label for="pais">País: </label>
-                <input type="text" name="pais" id="pais">
+                <input type="text" name="pais" id="pais" required>
 
             </div>
 
