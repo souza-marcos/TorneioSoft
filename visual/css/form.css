@@ -1,13 +1,13 @@
-#content {
+/* #content {
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
+} */
 form {
   border-radius: 10px;
   background-color: #664a3a;
   padding: 5vh 5vw;
-  margin-top: 5vh;
+  width: 40vw;
+  margin: 5vh auto;
 }
 .rowForm {
   margin-bottom: 3vh;
@@ -33,11 +33,20 @@ select{
 }
 
 button {
-  height: 4vh;
+  border: none;
+  min-width: 60px;
+  height: 30px;
   width: 6vw;
   border-radius: 5px;
-  font-size: 1rem;
 }
 button:hover {
+  cursor: pointer;
   background-color: #ccc;
+}
+
+
+@media(max-width:760px){
+  form {
+    width: 95vw;
+  }
 }

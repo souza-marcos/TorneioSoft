@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TorneioSoft</title>
   <link rel="stylesheet" href="./visual/css/main.css" />
+  <link rel="stylesheet" href="visual/css/indexpage.css">
 </head>
 
 <body>

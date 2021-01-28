@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <title>Cadastro de Lances</title>
+    <?php
+        session_start();        
+        if (!isset($_SESSION['usuario']) | empty($_SESSION)) {
+            session_destroy();
+            header("Location: ../index.php");
+            
+        }
+        
+    ?>
 </head>
 
 <body>
@@ -20,6 +29,7 @@
         require_once '../modelo/Lance.php';
         require_once '../Dao/DaoLance.php';
         $lance = new Lance();
+
         $lance->setPartida($_POST['partida']);
         $lance->setGerador($_POST['gerador']);
         $lance->setHorario($_POST['horario']);

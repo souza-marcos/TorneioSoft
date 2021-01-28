@@ -5,29 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/inicialpage.css">
+    <link rel="stylesheet" href="css/indexpage.css">
     <title>TorneioSoft - Página Inicial</title>
     <?php
-        $autenticado = false;
-        session_start();
-        if(isset($_SESSION['usuario'])){
-            $autenticado = true;
-        }
+    $autenticado = false;
+
+    session_start();
+    if (isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])) {
+        $autenticado = true;
+    }
     ?>
+    <script>
+        function requireLogin() {
+            alert("É necessário que você faça login para o acesso dessa parte do sistema");
+        }
+    </script>
 </head>
 
 <body>
-    <h2>Consulta a dados</h2>
-    <div>
-        <a href="listaTimes.php">Lista de Times</a>
-        <a href="listaPartidas.php">Lista de Partidas</a>
-        <a href="listaLances.php">Lista de Lances</a>
-    </div>
+    <nav>
+        <h1>TorneioSoft</h1>
+    </nav>
+    <div id="descricao">
+        <h2>Consulta a dados</h2>
+        <div>
+            <a href="listaTimes.php">Lista de Times</a>
+            <a href="listaPartidas.php">Lista de Partidas</a>
+            <a href="listaLances.php">Lista de Lances</a>
+        </div>
 
-    <h2>Cadastro</h2>
-    <div>
-        <a href="formCadastroTime.php" >Cadastrar Times</a>
-        <a href="formCadastroPartida.php">Cadastrar Partidas</a>
-        <a href="formCadastroLance.php">Cadastrar Lances</a>
+        <h2>Cadastro</h2>
+        <div>
+            <a <?php
+                if ($autenticado) {
+                    echo 'href="formCadastroTime.php"';
+                } else {
+                    echo 'href="#"  onclick="requireLogin()"';
+                }
+                ?>>Cadastrar Times</a>
+            <a <?php
+                if ($autenticado) {
+                    echo 'href="formCadastroPartida.php"';
+                } else {
+                    echo 'href="#"  onclick="requireLogin()"';
+                }
+                ?>>Cadastrar Partidas</a>
+            <a <?php
+                if ($autenticado) {
+                    echo 'href="formCadastroLance.php"';
+                } else {
+                    echo 'href="#"  onclick="requireLogin()"';
+                }
+                ?>>Cadastrar Lances</a>
+        </div>
+    </div>
+    <div id="entrada" class="card">
+
+        <h2>Mensagens importantes</h2><br>
+
+        <?php
+        if ($autenticado) {
+            echo '<p>Usuário Logado: ' . $_SESSION['usuario'][1] . '</p><br>';
+            echo '<a href="../index.php">Logout</a>';
+        } else {
+            echo '<p>Você está no modo visitante.';
+        }
+        ?>
     </div>
 </body>
 

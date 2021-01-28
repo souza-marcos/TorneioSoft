@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="./css/form.css">
     <title>Cadastro de Partidas</title>
     <?php
+    session_start();
+    if (!isset($_SESSION['usuario']) | empty($_SESSION)) {
+        session_destroy();
+        header("Location: ../index.php");
+        
+    }
     require_once '../Dao/DaoPartida.php';
     require_once '../Dao/DaoTime.php';
 

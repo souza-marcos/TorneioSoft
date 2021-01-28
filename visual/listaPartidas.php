@@ -7,6 +7,19 @@
     <title>Lista de Partidas</title>
     <link rel="stylesheet" href="./css/tableStyle.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/listagem.css">
+    <style>
+        .celulaLinks{
+            display: flex;  
+            justify-content:space-between;
+        }
+        .celulaLinks a{
+            display: flex;
+            max-width: 100px;
+            max-height: 40px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -14,7 +27,7 @@
         <h1>Atividade de LP II </h1>
         <a href="../index.html">Página Inicial</a>
     </nav>
-    <div id="content">
+    <div id="descricao">
         <h1>Lista de Partidas</h1>
         <table>
             <tr>
@@ -44,7 +57,7 @@
                     }
                     echo '<td>' . $valor . '</td>';
                 }
-                echo '<td><a href="./listaLances.php?id=' . $linha['id'] . '">Visualizar</a> <a href="./formCadastroLance.php?id=' . $linha['id'] . '">Cadastrar</a></td>';
+                echo '<td class="celulaLinks"><a href="./listaLances.php?id=' . $linha['id'] . '">Visualizar</a> <a href="./formCadastroLance.php?id=' . $linha['id'] . '">Cadastrar</a></td>';
 
                 echo '</tr>';
             }

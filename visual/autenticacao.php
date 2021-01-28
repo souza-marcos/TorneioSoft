@@ -11,13 +11,9 @@ if (isset($_POST['usuario']) && isset($_POST['senha']) && !isset($_POST['nome'])
         $_SESSION['usuario'] = [$usuario[0]['id'], $_POST['usuario']];
         header("Location: paginaInicial.php");
     } else {
-        // usuario nulo
         header("Location: login.php");
     }
-}
-
-
-if (isset($_POST['nome']) && isset($_POST['senha']) && isset($_POST['usuario'])) {
+}else if (isset($_POST['nome']) && isset($_POST['senha']) && isset($_POST['usuario'])) {
     $usuario = new Usuario();
     $usuario->setNome($_POST['nome']);
     $usuario->setSenha($_POST['senha']);
@@ -28,7 +24,6 @@ if (isset($_POST['nome']) && isset($_POST['senha']) && isset($_POST['usuario']))
         $_SESSION['usuario'] = [$usuariobd[0]['id'], $usuario->getUsuario()];
         header("Location: paginaInicial.php");
     } else {
-        // falha ao inserir usuario
         header("Location: registro.php");
     }
 } 

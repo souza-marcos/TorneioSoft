@@ -7,12 +7,14 @@
     <title>Lista de Lances</title>
     <link rel="stylesheet" href="./css/tableStyle.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/listagem.css">
     <style>
         table {
             width: 70%;
         }
     </style>
     <?php
+
     require_once '../modelo/Lance.php';
     require_once '../Dao/DaoLance.php';
 
@@ -33,7 +35,7 @@
         <h1>Atividade de LP II </h1>
         <a href="../index.html">Página Inicial</a>
     </nav>
-    <div id="content">
+    <div id="descricao">
         <h1>Lista de Lances</h1>
         <?php
         if ($lista == null) {

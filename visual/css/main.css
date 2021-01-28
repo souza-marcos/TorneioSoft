@@ -8,31 +8,23 @@
   box-sizing: border-box;
   color: #000;
 }
-body {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 10vh 90vh;
-  grid-template-areas:
-    "h h"
-    "m a";
-  background-image: url("images/bola-desktop.jpg");
+body{
+  background-image: url(../images/bola-desktop.jpg);
   background-attachment: fixed;
   background-position: center;
 }
 
 nav {
   background-color: #29652a;
-  grid-area: h;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  min-height: 10vh;
 }
 
 #descricao {
-  grid-area: m;
   padding: 2vh 2vw;
   display: inherit;
-  align-content: center;
   line-height: 2rem;
 }
 #descricao p {
@@ -44,7 +36,6 @@ nav {
 }
 
 #entrada {
-  grid-area: a;
   padding: 3vh 2vw;
   text-align: justify;
 }
@@ -97,7 +88,7 @@ a:hover {
   body {
     display: flex;
     flex-direction: column;
-    background-image: url(images/bola-mobile.jpg);
+    background-image: url(../images/gramado-M.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -116,5 +107,15 @@ a:hover {
 
   a {
     width: auto;
+  }
+}
+
+
+@media(max-width: 450px){
+  body{
+    background-image: url(../images/gramado-Smartphones.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 }

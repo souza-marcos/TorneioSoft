@@ -1,0 +1,37 @@
+body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 10vh 90vh;
+  grid-template-areas:
+    "h h"
+    "m a";
+}
+nav {
+  grid-area: h;
+}
+
+#descricao {
+  grid-area: m;
+  align-content: center;
+}
+#entrada {
+  grid-area: a;
+}
+@media (max-width: 760px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../images/gramado-M.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+@media(max-width: 450px){
+  body{
+    background-image: url(../images/gramado-Smartphones.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

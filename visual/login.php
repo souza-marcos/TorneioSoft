@@ -14,24 +14,20 @@
         <h1>TorneioSoft</h1>
     </nav>
 
-    <div class="card">
+    <form action="autenticacao.php" method="post">
 
-        <form action="autenticacao.php" method="post">
-            
-            <div class="rowForm">
-                <label for="usuario">Digite seu nome de Usuário: </label>
-                <input type="text" name="usuario" id="usuario" required>
-            </div>
-            <div class="rowForm">
-                <label for="senha">Digite sua senha: </label>
-                <input type="password" name="senha" id="senha" required>
-            </div>
-            <div class="rowForm">
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
+        <div class="rowForm">
+            <label for="usuario">Digite seu nome de Usuário: </label>
+            <input type="text" name="usuario" id="usuario" required>
+        </div>
+        <div class="rowForm">
+            <label for="senha">Digite sua senha: </label>
+            <input type="password" name="senha" id="senha" required>
+        </div>
+        <div class="rowForm">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
 
-    </div>
 </body>
-
 </html>

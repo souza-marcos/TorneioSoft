@@ -1,8 +1,12 @@
 <?php
 
 class Conexao{
+    //private static $dsn = 'mysql:host=sql113.epizy.com;dbname=epiz_27775917_lancealance;port=3306';
+    // private static $usuario = 'epiz_27775917';
+    // private static $senha = 'ZeVJ8IOCOe3Z';
+    // private static $con = null;
 
-    private static $dsn = 'mysql:host=localhost;dbname=lancealance;port=3306';
+    private static $dsn = 'mysql:host=127.0.0.1;dbname=lancealance;port=3306';
     private static $usuario = 'root';
     private static $senha = '';
     private static $con = null;
