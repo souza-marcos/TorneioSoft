@@ -28,7 +28,7 @@ class DaoPartida
 
     public function getLista()
     {
-        $sql = 'select * from Partida;';
+        $sql = 'select * from partida;';
         $lista = array();
         try {
             $pst = Conexao::getPreparedStatement($sql);
@@ -41,7 +41,7 @@ class DaoPartida
     }
     public function getPartida($id)
     {
-        $sql = 'select * from Partida where id = ' . $id . ';';
+        $sql = 'select * from partida where id = ' . $id . ';';
         $partida = null;
         try {
             $pst = Conexao::getPreparedStatement($sql);

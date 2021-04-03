@@ -7,46 +7,62 @@
     <title>Lista de Partidas</title>
     <link rel="stylesheet" href="./css/tableStyle.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/listagem.css">
+
     <style>
-        .celulaLinks{
-            display: flex;  
-            justify-content:space-between;
+        .celulaLinks {
+            display: flex;
+            justify-content: space-between;
         }
-        .celulaLinks a{
+
+        .celulaLinks a {
             display: flex;
             max-width: 100px;
             max-height: 40px;
         }
-
     </style>
+    <script>
+        function requireLogin() {
+            alert("É necessário que você faça login para o acesso dessa parte do sistema");
+        }
+    </script>
 </head>
 
 <body>
     <nav>
-        <h1>Atividade de LP II </h1>
-        <a href="../index.html">Página Inicial</a>
+        <h1>TorneioSoft</h1>
+        <a href="paginaInicial.php">Página Inicial</a>
     </nav>
     <div id="descricao">
         <h1>Lista de Partidas</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Time Casa</th>
-                <th>Gols Casa</th>
-                <th>Time Fora</th>
-                <th>Gols Fora</th>
-                <th>Data</th>
-                <th>Local</th>
-                <th>Lances</th>
-            </tr>
-            <?php
-            require_once '../Dao/DaoPartida.php';
-            require_once '../Dao/DaoTime.php';
 
-            $daoPartida = new DaoPartida();
-            $daoTime = new DaoTime();
-            $lista = $daoPartida->getLista();
+        <?php
+        session_start();
+        $autenticado = false;
+    
+        if (isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])) {
+            $autenticado = true;
+        }
+
+        require_once '../Dao/DaoPartida.php';
+        require_once '../Dao/DaoTime.php';
+
+        $daoPartida = new DaoPartida();
+        $daoTime = new DaoTime();
+        $lista = $daoPartida->getLista();
+        if ($lista == null) {
+            echo '<p>Não possui nunhuma partida cadastrada!</p>';
+        } else {
+            echo '<table>
+                <tr>
+                    <th>ID</th>
+                    <th>Time Casa</th>
+                    <th>Gols Casa</th>
+                    <th>Time Fora</th>
+                    <th>Gols Fora</th>
+                    <th>Data</th>
+                    <th>Local</th>
+                    <th>Lances</th>
+                </tr>';
 
             foreach ($lista as $linha) {
                 echo '<tr>';
@@ -57,12 +73,20 @@
                     }
                     echo '<td>' . $valor . '</td>';
                 }
-                echo '<td class="celulaLinks"><a href="./listaLances.php?id=' . $linha['id'] . '">Visualizar</a> <a href="./formCadastroLance.php?id=' . $linha['id'] . '">Cadastrar</a></td>';
+                echo '<td class="celulaLinks">
+                <a href="./listaLances.php?id=' . $linha['id'] . '">Visualizar</a>';
+                if($autenticado){
+                    echo '<a href="./formCadastroLance.php?id=' . $linha['id'] . '">Cadastrar</a>';
+                }else{
+                    echo '<a href="#" onClick="requireLogin()">Cadastrar</a>';
+                }
+                 
 
-                echo '</tr>';
+                echo '</td></tr>';
             }
-            ?>
-        </table>
+            echo '</table>';
+        }
+        ?>
     </div>
 </body>
 

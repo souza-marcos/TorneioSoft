@@ -12,6 +12,7 @@
 <body>
     <nav>
         <h1>TorneioSoft</h1>
+        <a href="../index.php">Página Inicial</a>
     </nav>
 
     <form action="autenticacao.php" method="post">

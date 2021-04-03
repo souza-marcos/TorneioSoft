@@ -11,7 +11,6 @@
         if (!isset($_SESSION['usuario']) | empty($_SESSION)) {
             session_destroy();
             header("Location: ../index.php");
-            
         }
         
     ?>
@@ -19,10 +18,11 @@
 
 <body>
     <nav>
-        <h1>Atividade de LP II </h1>
-        <a href="../index.html">Página Inicial</a>
+        <h1>TorneioSoft</h1>
+        <a href="paginaInicial.php">Página Inicial</a>
+        <a href="listaLances.php">Listagem Lances</a>
     </nav>
-    <div id="content">
+    <div id="descricao">
         <h1>Cadastro de Lances</h1>
 
         <?php
@@ -34,7 +34,23 @@
         $lance->setGerador($_POST['gerador']);
         $lance->setHorario($_POST['horario']);
         $lance->setLance($_POST['lance']);
-        $lance->setFoto($_POST['foto']);
+        
+
+
+        $formatos = array('png','jpg','jpeg','gif');
+        $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+        if(in_array($extensao, $formatos)){
+            $pasta = "../fotos/";
+            $temporario = $_FILES['foto']['tmp_name'];
+            $novoNome = uniqid().'.'.$extensao;
+            if(move_uploaded_file($temporario, $pasta.$novoNome)){
+                $lance->setFoto($pasta.$novoNome);
+            }else{
+                echo '<p>Erro ao salvar a foto</p>';
+            }
+        }else{
+            echo '<p>Formato inválido de foto</p>';
+        }
 
         $daoLance = new DaoLance();
         if ($daoLance->incluir($lance)) {
@@ -44,6 +60,10 @@
         }
 
         ?>
+        
+        <a href="listaPartidas.php">Listagem Partidas</a>
+        <a href="formCadastroLance.php">Cadastro Lances</a>
+        <a href="listaLances.php">Listagem Lances</a>
     </div>
 </body>
 

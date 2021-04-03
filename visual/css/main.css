@@ -24,8 +24,14 @@ nav {
 
 #descricao {
   padding: 2vh 2vw;
-  display: inherit;
   line-height: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#descricao h1{
+   color: black;
+   margin: 4vh 0;
 }
 #descricao p {
   font-size: 1.3rem;

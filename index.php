@@ -7,6 +7,12 @@
   <title>TorneioSoft</title>
   <link rel="stylesheet" href="./visual/css/main.css" />
   <link rel="stylesheet" href="visual/css/indexpage.css">
+  <?php
+    session_start();
+    if(isset($_SESSION['logout']) && $_SESSION['logout']){
+      session_destroy();
+    }
+  ?>
 </head>
 
 <body>

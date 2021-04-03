@@ -7,7 +7,7 @@ class DaoLance
 
     public function incluir(Lance $lance)
     {
-        $sql = 'insert into Lance(id, partida, gerador, horario, lance, foto) values (?,?,?,?,?,?);';
+        $sql = 'insert into lance(id, partida, gerador, horario, lance, foto) values (?,?,?,?,?,?);';
         try {
             $pst = Conexao::getPreparedStatement($sql);
             $pst->bindValue(1, $lance->getId());
@@ -27,7 +27,7 @@ class DaoLance
 
     public function getLista()
     {
-        $sql = 'select * from Lance;';
+        $sql = 'select * from lance;';
         $lista = array();
         try {
             $pst = Conexao::getPreparedStatement($sql);
@@ -40,7 +40,7 @@ class DaoLance
     }
 
     public function getLancesPartida($idPartida){
-        $sql = 'select * from Lance where partida ='.$idPartida.';';
+        $sql = 'select * from lance where partida ='.$idPartida.';';
         $lista = array();
         try {
             $pst = Conexao::getPreparedStatement($sql);

@@ -11,6 +11,7 @@ nav {
 }
 
 #descricao {
+  display: inherit;
   grid-area: m;
   align-content: center;
 }

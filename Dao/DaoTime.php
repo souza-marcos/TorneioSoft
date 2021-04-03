@@ -22,8 +22,8 @@ class DaoTime
 
     public function getLista()
     {
-        $sql = 'select * from Time;';
-        $lista = array();
+        $sql = 'select * from time;';
+        $lista = null;
         try {
             $pst = Conexao::getPreparedStatement($sql);
             $pst->execute();
@@ -35,7 +35,7 @@ class DaoTime
     }
     public function getTime($id)
     {
-        $sql = 'select * from Time where id = ' . $id .';';
+        $sql = 'select * from time where id = ' . $id .';';
         $result = array();
         try {
             $pst = Conexao::getPreparedStatement($sql);

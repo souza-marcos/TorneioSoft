@@ -7,10 +7,12 @@
     <title>Lista de Lances</title>
     <link rel="stylesheet" href="./css/tableStyle.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/listagem.css">
     <style>
         table {
             width: 70%;
+        }
+        td a{
+            width: 10vw;
         }
     </style>
     <?php
@@ -32,11 +34,13 @@
 
 <body>
     <nav>
-        <h1>Atividade de LP II </h1>
-        <a href="../index.html">Página Inicial</a>
+        <h1>TorneioSoft</h1>
+        <a href="paginaInicial.php">Página Inicial</a>
+        <a href="listaPartidas.php">Listagem Partidas</a>
     </nav>
     <div id="descricao">
         <h1>Lista de Lances</h1>
+        
         <?php
         if ($lista == null) {
             echo '<p>Não possui nunhum lance cadastrado!</p>';
@@ -54,7 +58,15 @@
             foreach ($lista as $linha) {
                 echo '<tr>';
                 foreach ($linha as $valor) {
-                    echo '<td>' . $valor . '</td>';
+                    if ($valor == $linha['foto']) {
+                        if (!empty($linha['foto'])) {
+                            echo '<td><a href="'.$linha['foto'].'" target="_blank" rel="noopener noreferrer" download="fotolance">Baixar</a></td>';
+                        } else {
+                            echo '<td>Sem foto.</td>';
+                        }
+                    } else {
+                        echo '<td>' . $valor . '</td>';
+                    }
                 }
                 echo '</tr>';
             }
